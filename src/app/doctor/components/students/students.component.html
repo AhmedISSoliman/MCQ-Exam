@@ -1,0 +1,38 @@
+<div class="students">
+    <table mat-table [dataSource]="dataTable" class="mat-elevation-z8">
+        {{StudentsList| json}}
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+        <!-- Position Column -->
+        <ng-container matColumnDef="No.">
+            <th mat-header-cell *matHeaderCellDef>#</th>
+            <td mat-cell *matCellDef="let element ; let index = index"> {{index + 1}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> {{'Name'|translate}} </th>
+            <td mat-cell *matCellDef="let element;let index=index"> {{element?.name | uppercase}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="subjectName">
+            <th mat-header-cell *matHeaderCellDef> {{'Subject'|translate}} </th>
+            <td mat-cell *matCellDef="let element;let index=index"> <span> {{element?.subjectName
+                    ?element?.subjectName:'N/A'|translate }}</span> </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="degree">
+            <th mat-header-cell *matHeaderCellDef> {{'Degree'|translate}} </th>
+            <td mat-cell *matCellDef="let element;let index=index"> {{element?.degree>=0
+                ?element?.degree:'N/A'|translate
+                }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+</div>

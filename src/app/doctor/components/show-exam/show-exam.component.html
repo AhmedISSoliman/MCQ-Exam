@@ -1,0 +1,38 @@
+<div class="examBox">
+    <div class="examhead text-center">
+        <h2>{{subject?.name |translate}} {{'Exam' | translate}}</h2>
+    </div>
+    <div class="quizBox" *ngFor="let item of subject?.questions;let index = index ">
+        <strong><span class="text-danger">{{'Question'}} {{1 + index}}</span> . {{item.question}}</strong>
+        <div class="row mt-3">
+            <div class="col-md-6 col-sm-12">
+                <label>A. {{item.answer1}}</label>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <label>B. {{item.answer2}}</label>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <label>C. {{item.answer3}}</label>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <label>D. {{item.answer4}}</label>
+            </div>
+            <div class="col-md-6 col-sm-12 mt-4">
+                <label class="badge bg-success">{{'CorrectAnswer' | translate}} {{item.correctAnswer}}
+                </label>
+            </div>
+        </div>
+        <div style="text-align: end;" *ngIf="user?.role == 'doctor'">
+            <button mat-raised-button class="btn btn-danger" (click)="delete(index)">{{'Delete' | translate}}</button>
+        </div>
+        <hr>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-12">
+        <a routerLink="/subjects" mat-raised-button color="primary">{{'Back' | translate}}</a>
+    </div>
+</div>

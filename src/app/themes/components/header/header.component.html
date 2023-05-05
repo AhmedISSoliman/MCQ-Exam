@@ -1,0 +1,47 @@
+<mat-toolbar color="primary" class="navbar navbar-default py-2">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" routerLinkActive="active" routerLink="/subjects"><img
+                    src="../../../assets/images/school_white_24dp.svg" alt=""> {{'Final'|translate}} </a>
+            <div class="langs">
+                <a *ngIf="currentLanguage=='ar'" class="btn btn-outline-dark" style="padding: 0.2rem 1.5rem;"
+                    (click)="changeLanguage('en')">en</a>
+                <a *ngIf="currentLanguage=='en'" class="btn btn-outline-dark" style="padding: 0.2rem 1.5rem;"
+                    (click)="changeLanguage('ar')">ع</a>
+            </div>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="d-flex align-items-center">
+            <ul class="nav navbar-right d-flex align-items-center">
+                <li *ngIf="userData?.role == 'doctor'" routerLinkActive="active"><a
+                        routerLink="/new-exam">{{'NewExam'|translate}}</a>
+                </li>
+                <li *ngIf="userData?.role == 'doctor'" routerLinkActive="active"><a routerLink="/students">{{'Students'
+                        |
+                        translate}}</a></li>
+                <li *ngIf="userData" routerLinkActive="active"><a routerLink="/subjects">{{'Subjects' |
+                        translate}}
+                    </a></li>
+                <li *ngIf="userData" routerLinkActive="active" style="cursor:pointer ;" (click)="logout()">
+                    <a>{{'Logout' |
+                        translate}}</a>
+                </li>
+                <li *ngIf="!userData" routerLinkActive="active"><a routerLink="/login">{{'Login' | translate}}</a>
+                </li>
+                <li *ngIf="!userData" routerLinkActive="active"><a routerLink="/register">{{"SignUp" |
+                        translate}}</a></li>
+                <!-- <li  class="username">{{user?.username}}</li> -->
+                <li class="username mx-2" *ngIf="userData">
+                    <span *ngIf="userData?.role == 'doctor'">
+                        {{'Dr' | translate}}/ {{userData?.userName | uppercase}}
+                    </span>
+                    <span *ngIf="userData?.role == 'students'">
+                        {{userData?.userName | uppercase}}
+                    </span>
+                </li>
+            </ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div>
+</mat-toolbar>

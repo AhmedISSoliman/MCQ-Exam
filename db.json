@@ -1,0 +1,153 @@
+{
+  "login": [
+    {
+      "userName": "Ali",
+      "role": "doctor",
+      "userId": 1,
+      "id": 1
+    }
+  ],
+  "students": [
+    {
+      "userName": "ahmed",
+      "email": "soliman@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "id": 1,
+      "subjects": [
+        {
+          "name": "Math",
+          "degree": 2,
+          "id": "1"
+        },
+        {
+          "name": "Arabic",
+          "degree": 1,
+          "id": "2"
+        },
+        {
+          "name": "Arts",
+          "degree": 0,
+          "id": "3"
+        }
+      ]
+    },
+    {
+      "userName": "ali",
+      "email": "ali@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "id": 2,
+      "subjects": [
+        {
+          "name": "Math",
+          "degree": 1,
+          "id": "1"
+        },
+        {
+          "name": "Arabic",
+          "degree": 0,
+          "id": "2"
+        },
+        {
+          "name": "Arts",
+          "degree": 0,
+          "id": "3"
+        }
+      ]
+    },
+    {
+      "userName": "othman",
+      "email": "othman@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "id": 3,
+      "subjects": [
+        {
+          "name": "Math",
+          "degree": 1,
+          "id": "1"
+        },
+        {
+          "name": "Arts",
+          "degree": 1,
+          "id": "3"
+        },
+        {
+          "name": "Arabic",
+          "degree": 1,
+          "id": "2"
+        }
+      ]
+    }
+  ],
+  "doctor": [
+    {
+      "userName": "Ali",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "id": 1
+    }
+  ],
+  "subjects": [
+    {
+      "name": "Math",
+      "questions": [
+        {
+          "question": "2*2 ؟",
+          "answer1": "4",
+          "answer2": "5",
+          "answer3": "3",
+          "answer4": "2",
+          "correctAnswer": "4"
+        },
+        {
+          "question": "12*12 ؟",
+          "answer1": "144",
+          "answer2": "133",
+          "answer3": "122",
+          "answer4": "111",
+          "correctAnswer": "144"
+        },
+        {
+          "question": "x-1+2 ",
+          "answer1": "x=-1",
+          "answer2": "x=+1",
+          "answer3": "x=2",
+          "answer4": "x=0",
+          "correctAnswer": "x=-1"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "Arabic",
+      "questions": [
+        {
+          "question": "جمع كلمة اسم ؟",
+          "answer1": "اسماء ",
+          "answer2": "اسم ",
+          "answer3": "مسامي",
+          "answer4": "جميع ما سبق",
+          "correctAnswer": "اسماء "
+        }
+      ],
+      "id": 2
+    },
+    {
+      "name": "Arts",
+      "questions": [
+        {
+          "question": "who is the famous artist in the world ?",
+          "answer1": "you",
+          "answer2": "vanko5",
+          "answer3": "arhsmeds",
+          "answer4": "none",
+          "correctAnswer": "vanko5"
+        }
+      ],
+      "id": 3
+    }
+  ]
+}

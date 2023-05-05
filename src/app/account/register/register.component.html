@@ -1,0 +1,90 @@
+<div class="register">
+    <div class="text-center registhead">
+        <h2>{{'Register' |translate}}</h2>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <mat-form-field appearance="outline" color="warn">
+                    <mat-label>{{'Name'|translate}}</mat-label>
+                    <input matInput type="text" formControlName="userName" placeholder="{{'Name'|translate}}">
+                    <mat-error
+                        *ngIf="(registerForm.controls.userName.touched||isFormSubmitted)&&registerForm.controls.userName.errors&&registerForm.controls.userName.errors.required !=null">
+                        {{'Name'|translate}} {{'Required'|translate}}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="(registerForm.controls.userName.touched||isFormSubmitted)&&registerForm.controls.userName.errors&&registerForm.controls.userName.errors.minlength !=null">
+                        {{'Name'|translate}} {{'minLength'|translate :{chars:3 } }}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="(registerForm.controls.userName.touched||isFormSubmitted)&&registerForm.controls.userName.errors&&registerForm.controls.userName.errors.maxlength !=null">
+                        {{'Name'|translate}} {{'maxLength'|translate :{chars:20 } }}
+                    </mat-error>
+                    <!-- <mat-hint color="warn">must more than 5</mat-hint> -->
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <mat-form-field appearance="outline" color="warn">
+                    <mat-label>{{"Email" | translate}}</mat-label>
+                    <input matInput type="text" formControlName="email" placeholder="{{'Email' |translate}}">
+                    <mat-error
+                        *ngIf="(registerForm.controls.email.touched||isFormSubmitted)&&registerForm.controls.email.errors&&registerForm.controls.email.errors.required !=null">
+                        {{'Email'|translate}} {{'Required'|translate}}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="(registerForm.controls.email.touched||isFormSubmitted)&&registerForm.controls.email.errors&&registerForm.controls.email.errors.email !=null">
+                        {{'Email'|translate}} {{'NotValid'|translate }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <mat-form-field appearance="outline" color="warn">
+                    <mat-label>{{'Password'|translate}}</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="{{'Password'|translate}}">
+                    <mat-error
+                        *ngIf="(registerForm.controls.password.touched||isFormSubmitted)&&registerForm.controls.password.errors&&registerForm.controls.password.errors.required !=null">
+                        {{'Password'|translate}} {{'Required'|translate}}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="(registerForm.controls.password.touched||isFormSubmitted)&&registerForm.controls.password.errors&&registerForm.controls.password.errors.minlength !=null">
+                        {{'Password'|translate}} {{'minLength'|translate :{chars:5 } }}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="(registerForm.controls.password.touched||isFormSubmitted)&&registerForm.controls.password.errors&&registerForm.controls.password.errors.maxlength !=null">
+                        {{'Password'|translate}} {{'maxLength'|translate :{chars:20 } }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <mat-form-field appearance="outline" color="warn">
+                    <mat-label> {{'ConfirmPassword'|translate}}</mat-label>
+                    <input matInput type="password" formControlName="confirmPassword"
+                        placeholder="{{'ConfirmPassword' | translate}}">
+                    <mat-error
+                        *ngIf="(registerForm.controls.confirmPassword.touched||isFormSubmitted)&&registerForm.controls.confirmPassword.errors&&registerForm.controls.confirmPassword.errors.required !=null">
+                        {{'ConfirmPassword'|translate}} {{'Required'|translate}}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="(registerForm.controls.confirmPassword.touched||isFormSubmitted)&&registerForm.controls.confirmPassword.errors&&registerForm.controls.confirmPassword.errors.minlength !=null">
+                        {{'ConfirmPassword'|translate}} {{'minLength'|translate :{chars:5 } }}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="(registerForm.controls.confirmPassword.touched||isFormSubmitted)&&registerForm.controls.confirmPassword.errors&&registerForm.controls.confirmPassword.errors.maxlength !=null">
+                        {{'ConfirmPassword'|translate}} {{'maxLength'|translate :{chars:20 } }}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="(registerForm.controls.confirmPassword.touched||isFormSubmitted)&&registerForm.controls.confirmPassword.errors&&registerForm.controls.confirmPassword.errors.mustMatch !=null">
+                        {{'ConfirmPassword'|translate}} {{'NotMatchingWith'|translate }} {{'Password' | translate}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="text-right registfoot">
+            <a routerLink="/login" color="primary">{{'AlreadyHaveAccount' | translate}}</a>
+            <button mat-raised-button color="warn">{{'CreateAccount' | translate}}</button>
+        </div>
+    </form>
+</div>

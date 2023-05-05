@@ -1,0 +1,125 @@
+<mat-stepper linear #stepper orientation="horizontal" [selectedIndex]="selectedIndex" style="margin-top:34px">
+
+    <mat-step label="{{'SubjectName' |translate}}" [completed]="startFirst"
+        [style.pointer-events]="subjectNameForm.invalid?'none':'painted'" [stepControl]="subjectNameForm">
+        <!-- errorMessage="{{'SubjectName' | translate}} {{'Required' | translate}}" -->
+        <form [formGroup]="subjectNameForm">
+
+            <div class="row">
+                <div class="AddSubject">
+                    <div>{{'SubjectName' | translate}}</div>
+                    <mat-form-field appearance="fill" color="warn">
+                        <mat-label>{{'SubjectName' | translate}}</mat-label>
+                        <input matInput type="text" formControlName="subjectNameControl">
+                    </mat-form-field>
+                    <button color="warn" mat-raised-button matStepperNext (click)="start()">{{'Start' |
+                        translate}}</button>
+                </div>
+
+                <div class="text-danger"
+                    *ngIf="(subjectNameForm.controls.subjectNameControl.touched || isFormSubmitted)&& subjectNameForm.controls.subjectNameControl.errors&& subjectNameForm.controls.subjectNameControl.errors.required != null">
+                    {{'SubjectName' | translate}} {{"Required" | translate}}
+                </div>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step label="{{'Questions' | translate}} {{subjectName}}" [completed]="preview"
+        [style.pointer-events]="questionsForm.invalid?'none':'painted'" [stepControl]="questionsForm"
+        errorMessage="{{'Questions' | translate}} {{'Required' | translate}}">
+        <form [formGroup]="questionsForm">
+            <div class="row">
+                <div class="col-12">
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{'Question' | translate}}</mat-label>
+                        <input matInput placeholder="{{'Question' | translate}}" formControlName="question">
+                    </mat-form-field>
+                    <div class="row quesBlock">
+                        <div class="col-md-6 col-sm-12">
+                            <mat-radio-button value="answer1" (change)="getCorrect($event)" color="warn">
+                            </mat-radio-button>
+                            <mat-form-field color="warn">
+                                <mat-label>{{'Answer' | translate}} A</mat-label>
+                                <input type="text" matInput formControlName="answer1">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <mat-radio-button value="answer2" (change)="getCorrect($event)" color="warn">
+                            </mat-radio-button>
+                            <mat-form-field color="warn">
+                                <mat-label>{{'Answer' | translate}} B</mat-label>
+                                <input type="text" matInput formControlName="answer2">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <mat-radio-button value="answer3" (change)="getCorrect($event)" color="warn">
+                            </mat-radio-button>
+                            <mat-form-field color="warn">
+                                <mat-label>{{'Answer' | translate}} C</mat-label>
+                                <input type="text" matInput formControlName="answer3">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <mat-radio-button value="answer4" (change)="getCorrect($event)" color="warn">
+                            </mat-radio-button>
+                            <mat-form-field color="warn">
+                                <mat-label>{{'Answer' | translate}} D</mat-label>
+                                <input type="text" matInput formControlName="answer4">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="questBtn">
+                        <div>
+                            <button mat-raised-button class="btn btn-success" matStepperNext
+                                disabled="{{questions?.length?false:true}}" (click)="submit()">
+                                {{ (preview ? 'Show' : 'Finish') | translate}}
+                            </button>
+                            <button mat-raised-button color="warn" matStepperPrevious (click)="cancel()">{{'Close' |
+                                translate}}</button>
+                        </div>
+                        <div>
+                            <button mat-raised-button color="accent" (click)="clearForm()">{{'Delete' | translate}}
+                            </button>
+                            <button mat-raised-button color="primary" [disabled]="questionsForm.invalid"
+                                (click)="saveQuestion()">{{'Save' | translate}}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step label="{{'Exam' | translate}} {{subjectName}}">
+        <div class="examBox">
+            <div class="examhead text-center">
+                <h2>{{'Exam' | translate}} {{subjectName}}</h2>
+            </div>
+            <div class="quizBox" *ngFor="let item of questions; let index = index">
+                <strong><span class="text-danger">{{'Exam' | translate}} {{index+1}}</span> . {{item.question}}</strong>
+                <div class="row" dir="rtl">
+                    <div class="col-sm-12">
+                        A. {{item.answer1}}
+                    </div>
+                    <div class="col-sm-12">
+                        B. {{item.answer2}}
+                    </div>
+                    <div class="col-sm-12">
+                        C. {{item.answer3}}
+                    </div>
+                    <div class="col-sm-12">
+                        D. {{item.answer4}}
+                    </div>
+                    <div class="col-sm-12">
+                        <span class="badge bg-success">{{'CorrectAnswer'|translate}}. {{item.correctAnswer}}</span>
+                    </div>
+                </div>
+                <div class="text-start">
+                    <button mat-raised-button class="btn btn-danger"
+                        (click)="delete(index)">{{'Delete'|translate}}</button>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </mat-step>
+
+</mat-stepper>

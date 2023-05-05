@@ -1,0 +1,18 @@
+<div class="subjectBox">
+    <div class="row">
+        <div class="col-md-4 col-sm-12" *ngFor="let item of subjects;let index=index">
+            <div class="namesubject">
+                <div (click)="navigateToExam(item.id);">{{item.name | translate}}</div>
+            </div>
+            <div class="subBtn">
+                <button *ngIf="userData?.role == 'doctor'" mat-raised-button color="warn" (click)="delete(item.id)"
+                    class="mx-1"> {{'Delete' | translate}}</button>
+                <button (click)="navigateToExamDetails(item.id);" *ngIf="userData?.role == 'doctor'" mat-raised-button
+                    color="primary" class="mx-1">{{'Show' |
+                    translate}}</button>
+                <button (click)="navigateToExam(item.id);" *ngIf="userData?.role == 'students'" mat-raised-button
+                    class="mx-1 btn btn-success">{{'StartExam' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
